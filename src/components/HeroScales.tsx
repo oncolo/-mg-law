@@ -77,7 +77,7 @@ export default function HeroBackground() {
               priority={current === 0}
             />
           ) : (
-            <div className="h-full w-full" style={{ background: SLIDES[current].gradient }}>
+            <div className="h-full w-full" style={{ background: "#0f1117" }}>
               {/* subtle animated legal SVG watermark */}
               <svg
                 viewBox="0 0 800 800"
