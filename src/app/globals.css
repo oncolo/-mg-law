@@ -1,0 +1,144 @@
+@import "tailwindcss";
+@variant dark (&:where(.dark, .dark *));
+
+:root {
+  --ink: #12151c;
+  --ink-soft: #1b2030;
+  --parchment: #f5efe2;
+  --parchment-dim: #ece2cd;
+  --gold: #b9915a;
+  --gold-light: #dcb877;
+  --burgundy: #6e2a2a;
+  --line: rgba(185, 145, 90, 0.28);
+  --font-display: "Fraunces Variable", Georgia, serif;
+  --font-body: "Manrope Variable", system-ui, sans-serif;
+}
+
+.dark {
+  --ink: #e8dfc8;
+  --ink-soft: #2a2f3d;
+  --parchment: #0f1117;
+  --parchment-dim: #181c26;
+  --gold: #c9a46a;
+  --gold-light: #e8c98a;
+  --burgundy: #c47a7a;
+  --line: rgba(200, 160, 90, 0.22);
+  --icon-bg: #1e2233;
+  color-scheme: dark;
+}
+
+:root {
+  --icon-bg: #12151c;
+}
+
+.dark body,
+.dark {
+  background: #0f1117;
+  color: #e8dfc8;
+}
+
+.dark .card-parchment {
+  background: linear-gradient(160deg, #181c26, #1e2233);
+  border-color: rgba(200,160,90,0.18);
+  color: #e8dfc8;
+}
+
+/* icon containers — always dark regardless of mode */
+.icon-bg {
+  background: #12151c !important;
+}
+.dark .icon-bg {
+  background: #1e2233 !important;
+}
+
+.dark ::-webkit-scrollbar-track { background: #0f1117; }
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #0f1117;
+  color: var(--ink);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  transition: background 0.3s, color 0.3s;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display);
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--ink);
+}
+
+/* thin grain overlay for texture */
+.grain::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 60;
+  opacity: 0.045;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.text-gradient-gold {
+  background: linear-gradient(100deg, var(--gold-light), var(--gold) 55%, var(--burgundy));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.divider-rule {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold) 20%, var(--gold) 80%, transparent);
+}
+
+.card-parchment {
+  background: linear-gradient(160deg, #fbf7ec, #f0e6cf);
+  border: 1px solid var(--line);
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-14px) rotate(1.2deg); }
+}
+.float-slow { animation: floatSlow 9s ease-in-out infinite; }
+
+@keyframes floatSlower {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(10px); }
+}
+.float-slower { animation: floatSlower 13s ease-in-out infinite; }
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.shimmer-line {
+  background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 3.5s linear infinite;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--parchment);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--gold);
+  border-radius: 8px;
+}
